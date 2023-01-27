@@ -4,18 +4,35 @@
 #include<time.h> // time()함수 포함 라이브러리
 int main(void)
 {
-  int k; // 난수용 변수 선언
-  int e;
-  int m;
+  int kor[10]; // 난수용 변수 선언
+  int eng[10];
+  int math[10];
+  int i = 0;
+
+  int max;
+  int total[10];
+  float avr[10];
   srand(time(NULL)); // 매초 다른 시드값 생성
-  for(int i=0; i <10; i++){ // 100번 반복
-    k = rand()%101;
-    e = rand()%101;
-    m = rand()%101;
-    int sum = k + e + m;
-  float average = (float)(k + e + m)/3;
-    printf("%d] %d\t%d\t%d\t%d\t%.2f\n",
-            i+1, k, e, m, sum, average);
+  
+  for(i=0;i<10;i++){
+    kor[i] = rand()%101;
+    eng[i] = rand()%101;
+    math[i] = rand()%101;}
+
+  for(i=0;i<10;i++){
+    total[i] = kor[i]+eng[i]+math[i];
+    avr[i] = total[i]/3;}
+
+  max = 0;
+  for(i=0;i<10;i++){
+    if(total[max]<total[i]){
+      max = i;    }
   }
+
+for(i=0;i<10;i++){
+      printf("[%d] %d\t %d\t %d\t %d\t %.2f\n", i, kor[i], eng[i], math[i], total[i], avr[i]);}
+  
+  printf("maxindex : %d",max);
+  
   return 0;
 }
